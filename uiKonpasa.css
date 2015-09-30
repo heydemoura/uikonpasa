@@ -1,0 +1,61 @@
+.bubbleArea
+{
+	/*z-index: 1001;*/
+	
+
+	/*top: auto;
+	left: auto;
+	bottom: 2%;
+	right: 4%;
+	*/
+
+	min-width: inherit;
+	/*max-width: 300px;*/
+
+	height: auto;
+}
+
+.bubble
+{
+	z-index: 1002;
+
+	position: relative;
+	
+	float: center;	
+
+	margin-top: 10px;
+
+	min-width: inherit;
+	
+	height: auto;
+
+	-webkit-box-shadow: 0 0 20px 1px #666666;
+	box-shadow: 0 0 20px 1px #666666;
+
+	border: 0px solid #000;
+	border-radius: 6px;
+
+	word-wrap: break-word;
+}
+
+.bubble-danger
+{
+	color: #a94442;
+	background-color: #f2dede;
+}
+
+.bubble-info
+{
+	color: #31708f;
+	background-color: #d9edf7;
+}
+.bubble-success
+{
+	color: #3c763d;
+	background-color: #dff0d8;
+}
+.bubble-warning
+{
+	color: #8a6d3b;
+	background-color: #fcf8e3;
+}
