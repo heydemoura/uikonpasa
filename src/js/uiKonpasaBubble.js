@@ -1,10 +1,8 @@
-angular.module('uiKonpasa', []);
 angular.module('uiKonpasa')
-
 .directive('uiKonpasaBubbleArea', function() 
 {
 	return {
-		restrict: 'E',
+		restrict: 'A',
 		scope: {
 			bubbles : '='
 		},
@@ -27,7 +25,7 @@ angular.module('uiKonpasa')
 
 .directive('uiKonpasaBubble', function() {
 	return {
-		templateUrl: './templates/bubble.html',
+		templateUrl: 'templates/bubble.tpl.html',
 		replace: true,
 		require: "^uiKonpasaBubbleArea",
 		scope: {

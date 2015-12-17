@@ -1,0 +1,25 @@
+<div class="modal fade" id="lightboxModal">
+	<div class="modal-dialog lightbox">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="btn-group">
+					<button class="btn btn-default" ng-click="previousImg()">
+						Prev
+					</button>
+					<button class="btn btn-primary" data-dismiss="modal">
+						Close
+					</button>
+					<button class="btn btn-default" ng-click="nextImg()">
+						Next
+					</button>
+				</div>
+			</div>
+			<div class="modal-body">
+				{{active}}
+				<div class="lightbox-image">
+					<img src="{{source}}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
