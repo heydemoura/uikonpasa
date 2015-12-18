@@ -3,16 +3,17 @@
 	/*z-index: 1001;*/
 	
 
-	/*top: auto;
+	top: auto;
 	left: auto;
 	bottom: 2%;
 	right: 4%;
-	*/
-
-	min-width: inherit;
-	/*max-width: 300px;*/
-
+	
+	position: absolute;
+	min-width: 300px;
+	max-width: 300px;
 	height: auto;
+
+	border-radius: 6px;
 }
 
 .bubble
@@ -29,13 +30,17 @@
 	
 	height: auto;
 
-	-webkit-box-shadow: 0 0 20px 1px #666666;
-	box-shadow: 0 0 20px 1px #666666;
+	-webkit-box-shadow: 0 0 15px 1px #666666;
+	box-shadow: 0 0 15px 1px #666666;
 
 	border: 0px solid #000;
-	border-radius: 6px;
+	border-radius: 10px;
 
 	word-wrap: break-word;
+}
+
+.bubble .modal-content {
+	box-shadow: none;
 }
 
 .bubble-danger

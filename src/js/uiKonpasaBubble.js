@@ -2,7 +2,6 @@ angular.module('uiKonpasa')
 .directive('uiKonpasaBubbleArea', function() 
 {
 	return {
-		restrict: 'A',
 		scope: {
 			bubbles : '='
 		},
