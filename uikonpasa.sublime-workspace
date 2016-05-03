@@ -519,6 +519,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/css/uiKonpasa.css",
+			"settings":
+			{
+				"buffer_size": 1476,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 873,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -594,11 +610,8 @@
 	},
 	"expanded_folders":
 	[
-		"/home/hmoura/Projects/Angular/libs/uikonpasa",
-		"/home/hmoura/Projects/Angular/libs/uikonpasa/src",
-		"/home/hmoura/Projects/Angular/libs/uikonpasa/src/css",
-		"/home/hmoura/Projects/Angular/libs/uikonpasa/src/js",
-		"/home/hmoura/Projects/Angular/libs/uikonpasa/src/templates"
+		"/home/hmoura/Projects/Angular/directives/uikonpasa",
+		"/home/hmoura/Projects/Angular/directives/uikonpasa/src"
 	],
 	"file_history":
 	[
@@ -893,8 +906,68 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/css/uiKonpasa.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1476,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								34,
+								34
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "package.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 873,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Theme - Piatto/icons/Langs/npm JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -987,7 +1060,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 265.0,
+	"side_bar_width": 142.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

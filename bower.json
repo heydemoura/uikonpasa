@@ -1,0 +1,17 @@
+{
+  "name": "uikonpasa",
+  "description": "AngularJS directives to create and integrate new Bootstrap UI elements with AngularJS.",
+  "main": "index.js",
+  "authors": [
+    "Heyde Adilles Moura"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angularjs",
+    "bootstrap",
+    "konpasa",
+    "ui",
+    "directive"
+  ],
+  "homepage": "https://github.com/heydemoura/uikonpasa"
+}
