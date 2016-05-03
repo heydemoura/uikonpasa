@@ -8,10 +8,11 @@ angular.module('uiKonpasa')
 {
 	return {
 		scope: {
-			bubbles : '='
+			bubbles : '=',
+			max : '='
 		},
 		controller : function($scope, $element, $attrs) {
-
+			this.maxBubbles = $scope.max;
 			this.pushBubble = function(bubble)
 			{
 				$scope.bubbles.push(bubble);
@@ -32,13 +33,27 @@ angular.module('uiKonpasa')
 		templateUrl: 'templates/bubble.tpl.html',
 		replace: true,
 		require: "^uiKonpasaBubbleArea",
-		scope: {
-			body : "@",
-			type : "@"
-		},
-		link: function(scope, element, attrs, ctrl)
+		scope: true,
+		link: function($scope, $element, $attrs, $ctrl)
 		{
-			element.modal('show');		
+			$scope.close = function(index) {
+				$scope.bubbles.splice(index, 1);
+			};
+
+			$scope.body = $attrs.body;
+			$scope.type = $attrs.type;
+
+			$element.modal('show');
+			
+			// if ($scope.bubbles.length > $ctrl.maxBubbles+1) {
+			// 	$scope.bubbles.splice(0, 1);
+			// 	console.log("estorou!");
+			// }
+
+			setTimeout(function() {
+				$element.modal('hide');
+				element.remove();
+			}, 3000);
 		}
 	}
 });
@@ -183,8 +198,8 @@ angular.module('uiKonpasaTemplates', ['templates/bubble.tpl.html', 'templates/ga
 
 angular.module("templates/bubble.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/bubble.tpl.html",
-    "<div class=\"modal fade bubble\" data-backdrop=\"false\" >\n" +
-    "	<div class=\"modal-content\" data-dismiss=\"modal\">\n" +
+    "<div class=\"modal fade bubble\" data-backdrop=\"false\"  ng-click=\"close($index)\" data-dismiss=\"modal\">\n" +
+    "	<div class=\"modal-content\">\n" +
     "		<div class=\"modal-body\" \n" +
     "			ng-class=\"{\n" +
     "				'bubble-danger' : type=='danger', \n" +
