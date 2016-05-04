@@ -12,18 +12,36 @@ angular.module('uiKonpasa')
 			max : '='
 		},
 		controller : function($scope, $element, $attrs) {
-			this.maxBubbles = $scope.max;
+			
 			this.pushBubble = function(bubble)
 			{
 				$scope.bubbles.push(bubble);
 				delete $scope.bubble;
 			}
 
-			this.bubblesPop = function() {
-				$scope.bubbles.pop();
+			this.bubblePop = function(index) {
+				if (!index) {
+					$scope.bubbles.shift();
+					return;
+				}
+
+				$scope.bubbles.splice(index, 1);
 			}
 
 			$element.addClass('bubbleArea');
+
+			$scope.$watch('bubbles', function(newVal, oldVal){
+				if (newVal.length > oldVal.length) {
+				    if (newVal.length -1 >= $scope.max) {
+				    	$scope.bubbles.shift();
+				    	console.log($scope.bubbles);
+				    }
+
+			    	setTimeout(function() {
+						$scope.bubbles.shift();
+					}, 3000);
+				}
+			}, true);
 		}
 	}
 })
@@ -36,24 +54,12 @@ angular.module('uiKonpasa')
 		scope: true,
 		link: function($scope, $element, $attrs, $ctrl)
 		{
-			$scope.close = function(index) {
-				$scope.bubbles.splice(index, 1);
-			};
+			$scope.close = $ctrl.bubblePop;
 
 			$scope.body = $attrs.body;
 			$scope.type = $attrs.type;
 
 			$element.modal('show');
-			
-			// if ($scope.bubbles.length > $ctrl.maxBubbles+1) {
-			// 	$scope.bubbles.splice(0, 1);
-			// 	console.log("estorou!");
-			// }
-
-			setTimeout(function() {
-				$element.modal('hide');
-				element.remove();
-			}, 3000);
 		}
 	}
 });
@@ -198,8 +204,8 @@ angular.module('uiKonpasaTemplates', ['templates/bubble.tpl.html', 'templates/ga
 
 angular.module("templates/bubble.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/bubble.tpl.html",
-    "<div class=\"modal fade bubble\" data-backdrop=\"false\"  ng-click=\"close($index)\" data-dismiss=\"modal\">\n" +
-    "	<div class=\"modal-content\">\n" +
+    "<div class=\"modal fade bubble\" data-backdrop=\"false\"  >\n" +
+    "	<div class=\"modal-content\" data-dismiss=\"modal\">\n" +
     "		<div class=\"modal-body\" \n" +
     "			ng-class=\"{\n" +
     "				'bubble-danger' : type=='danger', \n" +
