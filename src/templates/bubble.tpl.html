@@ -1,14 +1,11 @@
-<div class="modal fade bubble" data-backdrop="false"  >
-	<div class="modal-content" data-dismiss="modal">
-		<div class="modal-body" 
-			ng-class="{
-				'bubble-danger' : type=='danger', 
-				'bubble-info' : type=='info', 
-				'bubble-success' : type=='success',
-				'bubble-warning' : type=='warning'}">
-			
-			<div ng-bind="body">
-			</div>
+<div class="bubble" ng-click="close()">
+	<div class="bubble-body" ng-class="{
+			'bubble-danger' : type=='danger', 
+			'bubble-info' : type=='info', 
+			'bubble-success' : type=='success',
+			'bubble-warning' : type=='warning'}">
+		
+		<div ng-bind="body">
 		</div>
 	</div>
 </div>

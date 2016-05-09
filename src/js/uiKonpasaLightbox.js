@@ -1,6 +1,11 @@
 angular.module('uiKonpasa')
 
-.directive('uiKonpasaGallery', function() {
+.directive('uiKonpasaGallery', uiKonpasaGallery)
+.directive('uiKonpasaGalleryItem', uiKonpasaGalleryItem)
+.directive('uiKonpasaLightbox', uiKonpasaLightbox);
+
+function uiKonpasaGallery() {
+
 	return {
 
 		scope: {
@@ -21,7 +26,7 @@ angular.module('uiKonpasa')
 					'source' : src
 				});
 
-			}
+			};
 
 			this.openLightbox = function(idx) {
 				var itemActive;
@@ -40,38 +45,38 @@ angular.module('uiKonpasa')
 					if (idx == i) {
 						itemActive = gallery[i];
 					};
-				}
+				};
 
 				lightbox.source = itemActive.source;
 				
 				active = itemActive.galleryItem.position;
-			}
+			};
 
 			this.registerLightbox = function(lbox) {
 				lightbox = lbox;
-			}
+			};
 
 			this.getColSize = function()
 			{
 				return $scope.size;
-			}
+			};
 
 			this.getGalleryLength = function()
 			{
 				return gallery.length;
-			}
+			};
 
 			this.getActive = function()
 			{
 				return active;
-			}
+			};
 
 			$element.addClass('ui-konpasa-gallery');
 		}
-	}
-})
+	};
+};
 
-.directive('uiKonpasaGalleryItem', function() {
+function uiKonpasaGalleryItem() {
 	return {
 		templateUrl: 'templates/galleryitem.tpl.html',
 		transclude: true,
@@ -95,12 +100,12 @@ angular.module('uiKonpasa')
 
 			scope.openLightbox = function() {
 				ctrl.openLightbox(scope.position);
-			}
+			};
 		}
-	}
-})
+	};
+};
 
-.directive('uiKonpasaLightbox', function() {
+function uiKonpasaLightbox() {
 	return {
 		templateUrl: 'templates/lightbox.tpl.html',
 		replace: true,
@@ -121,5 +126,5 @@ angular.module('uiKonpasa')
 				ctrl.openLightbox(ctrl.getActive()+1);
 			}
 		}
-	}
-});
+	};
+};

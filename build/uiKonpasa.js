@@ -1,11 +1,16 @@
 angular.module('uiKonpasa', ['uiKonpasaTemplates']);
 
-angular.module('uiKonpasa').run(function() {
+angular.module('uiKonpasa').run(uiKonpasaRun);
+
+function uiKonpasaRun() {
 	
-});
+};
 angular.module('uiKonpasa')
-.directive('uiKonpasaBubbleArea', function() 
-{
+
+.directive('uiKonpasaBubbleArea', uiKonpasaBubbleArea)
+.directive('uiKonpasaBubble', uiKonpasaBubble);
+
+function uiKonpasaBubbleArea() {
 	return {
 		scope: {
 			bubbles : '=',
@@ -17,7 +22,7 @@ angular.module('uiKonpasa')
 			{
 				$scope.bubbles.push(bubble);
 				delete $scope.bubble;
-			}
+			};
 
 			this.bubblePop = function(index) {
 				if (!index) {
@@ -26,7 +31,7 @@ angular.module('uiKonpasa')
 				}
 
 				$scope.bubbles.splice(index, 1);
-			}
+			};
 
 			$element.addClass('bubbleArea');
 
@@ -34,19 +39,18 @@ angular.module('uiKonpasa')
 				if (newVal.length > oldVal.length) {
 				    if (newVal.length -1 >= $scope.max) {
 				    	$scope.bubbles.shift();
-				    	console.log($scope.bubbles);
-				    }
+				    };
 
 			    	setTimeout(function() {
-						$scope.bubbles.shift();
-					}, 3000);
+			    		$scope.bubbles.shift();
+			    	}, 2000)
 				}
 			}, true);
 		}
-	}
-})
+	};
+};
 
-.directive('uiKonpasaBubble', function() {
+function uiKonpasaBubble() {
 	return {
 		templateUrl: 'templates/bubble.tpl.html',
 		replace: true,
@@ -59,13 +63,20 @@ angular.module('uiKonpasa')
 			$scope.body = $attrs.body;
 			$scope.type = $attrs.type;
 
-			$element.modal('show');
+			$element.show();
+
+			$scope.close = $element.remove;
 		}
 	}
-});
+}
 angular.module('uiKonpasa')
 
-.directive('uiKonpasaGallery', function() {
+.directive('uiKonpasaGallery', uiKonpasaGallery)
+.directive('uiKonpasaGalleryItem', uiKonpasaGalleryItem)
+.directive('uiKonpasaLightbox', uiKonpasaLightbox);
+
+function uiKonpasaGallery() {
+
 	return {
 
 		scope: {
@@ -86,7 +97,7 @@ angular.module('uiKonpasa')
 					'source' : src
 				});
 
-			}
+			};
 
 			this.openLightbox = function(idx) {
 				var itemActive;
@@ -105,38 +116,38 @@ angular.module('uiKonpasa')
 					if (idx == i) {
 						itemActive = gallery[i];
 					};
-				}
+				};
 
 				lightbox.source = itemActive.source;
 				
 				active = itemActive.galleryItem.position;
-			}
+			};
 
 			this.registerLightbox = function(lbox) {
 				lightbox = lbox;
-			}
+			};
 
 			this.getColSize = function()
 			{
 				return $scope.size;
-			}
+			};
 
 			this.getGalleryLength = function()
 			{
 				return gallery.length;
-			}
+			};
 
 			this.getActive = function()
 			{
 				return active;
-			}
+			};
 
 			$element.addClass('ui-konpasa-gallery');
 		}
-	}
-})
+	};
+};
 
-.directive('uiKonpasaGalleryItem', function() {
+function uiKonpasaGalleryItem() {
 	return {
 		templateUrl: 'templates/galleryitem.tpl.html',
 		transclude: true,
@@ -160,12 +171,12 @@ angular.module('uiKonpasa')
 
 			scope.openLightbox = function() {
 				ctrl.openLightbox(scope.position);
-			}
+			};
 		}
-	}
-})
+	};
+};
 
-.directive('uiKonpasaLightbox', function() {
+function uiKonpasaLightbox() {
 	return {
 		templateUrl: 'templates/lightbox.tpl.html',
 		replace: true,
@@ -186,10 +197,12 @@ angular.module('uiKonpasa')
 				ctrl.openLightbox(ctrl.getActive()+1);
 			}
 		}
-	}
-});
+	};
+};
 angular.module('uiKonpasa')
-.directive('uiKonpasaSidemenu', function() {
+.directive('uiKonpasaSidemenu', uiKonpasaSidemenu);
+
+function uiKonpasaSidemenu() {
 	return {
 		templateUrl: 'templates/sidemenu.tpl.html',
 		transclude: true,
@@ -198,23 +211,20 @@ angular.module('uiKonpasa')
 		{
 			$element.slide()
 		}
-	}
-});
+	};
+};
 angular.module('uiKonpasaTemplates', ['templates/bubble.tpl.html', 'templates/galleryitem.tpl.html', 'templates/lightbox.tpl.html', 'templates/sidemenu.tpl.html']);
 
 angular.module("templates/bubble.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/bubble.tpl.html",
-    "<div class=\"modal fade bubble\" data-backdrop=\"false\"  >\n" +
-    "	<div class=\"modal-content\" data-dismiss=\"modal\">\n" +
-    "		<div class=\"modal-body\" \n" +
-    "			ng-class=\"{\n" +
-    "				'bubble-danger' : type=='danger', \n" +
-    "				'bubble-info' : type=='info', \n" +
-    "				'bubble-success' : type=='success',\n" +
-    "				'bubble-warning' : type=='warning'}\">\n" +
-    "			\n" +
-    "			<div ng-bind=\"body\">\n" +
-    "			</div>\n" +
+    "<div class=\"bubble\" ng-click=\"close()\">\n" +
+    "	<div class=\"bubble-body\" ng-class=\"{\n" +
+    "			'bubble-danger' : type=='danger', \n" +
+    "			'bubble-info' : type=='info', \n" +
+    "			'bubble-success' : type=='success',\n" +
+    "			'bubble-warning' : type=='warning'}\">\n" +
+    "		\n" +
+    "		<div ng-bind=\"body\">\n" +
     "		</div>\n" +
     "	</div>\n" +
     "</div>");

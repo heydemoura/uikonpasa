@@ -1,5 +1,7 @@
 angular.module('uiKonpasa')
-.directive('uiKonpasaSidemenu', function() {
+.directive('uiKonpasaSidemenu', uiKonpasaSidemenu);
+
+function uiKonpasaSidemenu() {
 	return {
 		templateUrl: 'templates/sidemenu.tpl.html',
 		transclude: true,
@@ -8,5 +10,5 @@ angular.module('uiKonpasa')
 		{
 			$element.slide()
 		}
-	}
-});
+	};
+};

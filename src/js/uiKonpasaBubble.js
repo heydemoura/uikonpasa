@@ -1,6 +1,9 @@
 angular.module('uiKonpasa')
-.directive('uiKonpasaBubbleArea', function() 
-{
+
+.directive('uiKonpasaBubbleArea', uiKonpasaBubbleArea)
+.directive('uiKonpasaBubble', uiKonpasaBubble);
+
+function uiKonpasaBubbleArea() {
 	return {
 		scope: {
 			bubbles : '=',
@@ -12,7 +15,7 @@ angular.module('uiKonpasa')
 			{
 				$scope.bubbles.push(bubble);
 				delete $scope.bubble;
-			}
+			};
 
 			this.bubblePop = function(index) {
 				if (!index) {
@@ -21,7 +24,7 @@ angular.module('uiKonpasa')
 				}
 
 				$scope.bubbles.splice(index, 1);
-			}
+			};
 
 			$element.addClass('bubbleArea');
 
@@ -29,19 +32,18 @@ angular.module('uiKonpasa')
 				if (newVal.length > oldVal.length) {
 				    if (newVal.length -1 >= $scope.max) {
 				    	$scope.bubbles.shift();
-				    	console.log($scope.bubbles);
-				    }
+				    };
 
 			    	setTimeout(function() {
-						$scope.bubbles.shift();
-					}, 3000);
+			    		$scope.bubbles.shift();
+			    	}, 2000)
 				}
 			}, true);
 		}
-	}
-})
+	};
+};
 
-.directive('uiKonpasaBubble', function() {
+function uiKonpasaBubble() {
 	return {
 		templateUrl: 'templates/bubble.tpl.html',
 		replace: true,
@@ -54,7 +56,9 @@ angular.module('uiKonpasa')
 			$scope.body = $attrs.body;
 			$scope.type = $attrs.type;
 
-			$element.modal('show');
+			$element.show();
+
+			$scope.close = $element.remove;
 		}
 	}
-});
+}

@@ -11,9 +11,6 @@
 	min-width: 300px;
 	max-width: 300px;
 	height: auto;
-
-	border-radius: 6px;
-	box-shadow: 0 0 0 0 rgba(0,0,0,0);
 }
 
 .bubble
@@ -30,12 +27,21 @@
 	height: auto;
 
 	border: 0px solid #000;
-	border-radius: 10px;
 
 	word-wrap: break-word;
 	padding-right: 0px !important;
+	border-radius: 10px;
+}
+
+.bubble .bubble-body {
+	padding: 15px 15px;
+	border-radius: 10px;
 	-webkit-box-shadow: 0 0 10px 2px rgba(0,0,0,0.8);
 	box-shadow: 0 0 10px 2px rgba(0,0,0,0.8);
+}
+
+.bubble.modal-open {
+	position: absolute;
 }
 
 .bubble .modal-content {
