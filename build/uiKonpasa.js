@@ -200,6 +200,22 @@ function uiKonpasaLightbox() {
 	};
 };
 angular.module('uiKonpasa')
+.directive('uiKonpasaModal', uiKonpasaModal);
+
+function uiKonpasaModal() {
+	return {
+		templateUrl: 'templates/modal.tpl.html',
+		scope: {
+			title: '=',
+			body: '='
+		},
+		link: function($scope, $element, $attrs, $ctrl) {
+			$element.modal('hide');
+		}
+
+	}
+}
+angular.module('uiKonpasa')
 .directive('uiKonpasaSidemenu', uiKonpasaSidemenu);
 
 function uiKonpasaSidemenu() {
@@ -213,7 +229,7 @@ function uiKonpasaSidemenu() {
 		}
 	};
 };
-angular.module('uiKonpasaTemplates', ['templates/bubble.tpl.html', 'templates/galleryitem.tpl.html', 'templates/lightbox.tpl.html', 'templates/sidemenu.tpl.html']);
+angular.module('uiKonpasaTemplates', ['templates/bubble.tpl.html', 'templates/galleryitem.tpl.html', 'templates/lightbox.tpl.html', 'templates/modal.tpl.html', 'templates/sidemenu.tpl.html']);
 
 angular.module("templates/bubble.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/bubble.tpl.html",
@@ -260,6 +276,23 @@ angular.module("templates/lightbox.tpl.html", []).run(["$templateCache", functio
     "				<div class=\"lightbox-image\">\n" +
     "					<img src=\"{{source}}\" alt=\"\">\n" +
     "				</div>\n" +
+    "			</div>\n" +
+    "		</div>\n" +
+    "	</div>\n" +
+    "</div>");
+}]);
+
+angular.module("templates/modal.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("templates/modal.tpl.html",
+    "<div class=\"modal fade\" id=\"dialogModal\">\n" +
+    "	<div class=\"modal-dialog\">\n" +
+    "		<div class=\"modal-content\">\n" +
+    "			<div class=\"modal-header\" style='background-color: #337AB7; color: white'>\n" +
+    "				<b>{{title}}</b>\n" +
+    "				<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+    "			</div>\n" +
+    "			<div class=\"modal-body\" >\n" +
+    "				<div ng-include=\"body\"></div>\n" +
     "			</div>\n" +
     "		</div>\n" +
     "	</div>\n" +
