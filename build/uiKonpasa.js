@@ -206,9 +206,9 @@ function uiKonpasaModal() {
 	return {
 		templateUrl: 'templates/modal.tpl.html',
 		scope: {
-			title: '=',
-			body: '='
+			title: '='
 		},
+		transclude: true,
 		link: function($scope, $element, $attrs, $ctrl) {
 			$element.modal('hide');
 		}
@@ -292,7 +292,7 @@ angular.module("templates/modal.tpl.html", []).run(["$templateCache", function($
     "				<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
     "			</div>\n" +
     "			<div class=\"modal-body\" >\n" +
-    "				<div ng-include=\"body\"></div>\n" +
+    "				<div ng-transclude></div>\n" +
     "			</div>\n" +
     "		</div>\n" +
     "	</div>\n" +
