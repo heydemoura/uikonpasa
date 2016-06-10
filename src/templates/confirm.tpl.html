@@ -1,0 +1,20 @@
+<div class="modal fade uiKonpasaModal" data-dismissable="false">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content" >
+			<div class="modal-body">
+				<div class="text-center">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4>
+						{{title}}
+					</h4>
+				</div>
+				{{message}}
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-block" data-ng-repeat="btn in buttons track by $index" data-ng-class="{'btn-info' : btn.type=='info', 'btn-danger' : btn.type == 'danger', 'btn-default' : btn.type=='default', 'btn-success' : btn.type == 'success', 'btn-warning' : btn.type == 'warning', 'btn-primary' : btn.type == 'primary'}" data-ng-click='btn.callback()' data-dismiss="modal">
+					{{btn.label}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
