@@ -13,5 +13,8 @@
     "ui",
     "directive"
   ],
-  "homepage": "https://github.com/heydemoura/uikonpasa"
+  "homepage": "https://github.com/heydemoura/uikonpasa",
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
 }
