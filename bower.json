@@ -15,6 +15,7 @@
   ],
   "homepage": "https://github.com/heydemoura/uikonpasa",
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "angular-sanitize": "^1.5.7"
   }
 }

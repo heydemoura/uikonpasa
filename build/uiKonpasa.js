@@ -1,4 +1,4 @@
-angular.module('uiKonpasa', ['uiKonpasaTemplates']);
+angular.module('uiKonpasa', ['uiKonpasaTemplates', 'ngSanitize']);
 
 angular.module('uiKonpasa').run(uiKonpasaRun);
 
@@ -264,7 +264,7 @@ angular.module("templates/bubble.tpl.html", []).run(["$templateCache", function(
     "			'bubble-success' : type=='success',\n" +
     "			'bubble-warning' : type=='warning'}\">\n" +
     "		\n" +
-    "		<div ng-bind=\"body\">\n" +
+    "		<div ng-bind-html=\"body\">\n" +
     "		</div>\n" +
     "	</div>\n" +
     "</div>");

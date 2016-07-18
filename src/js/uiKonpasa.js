@@ -1,4 +1,4 @@
-angular.module('uiKonpasa', ['uiKonpasaTemplates']);
+angular.module('uiKonpasa', ['uiKonpasaTemplates', 'ngSanitize']);
 
 angular.module('uiKonpasa').run(uiKonpasaRun);
 
