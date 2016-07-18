@@ -8,9 +8,9 @@ function uiKonpasaModal() {
 			title: '='
 		},
 		transclude: true,
-		link: function($scope, $element, $attrs, $ctrl) {
+		link: ['$scope', '$element', '$attrs', '$ctrl', function($scope, $element, $attrs, $ctrl) {
 			$element.modal('hide');
-		}
+		}]
 
 	}
 }

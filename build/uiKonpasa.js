@@ -16,8 +16,7 @@ function uiKonpasaBubbleArea() {
 			bubbles : '=',
 			max : '='
 		},
-		controller : function($scope, $element, $attrs) {
-			
+		controller : ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
 			this.pushBubble = function(bubble)
 			{
 				$scope.bubbles.push(bubble);
@@ -46,7 +45,7 @@ function uiKonpasaBubbleArea() {
 			    	}, 2000)
 				}
 			}, true);
-		}
+		}]
 	};
 };
 
@@ -56,8 +55,7 @@ function uiKonpasaBubble() {
 		replace: true,
 		require: "^uiKonpasaBubbleArea",
 		scope: true,
-		link: function($scope, $element, $attrs, $ctrl)
-		{
+		link: ['$scope', '$element', '$attrs', '$ctrl' ,function($scope, $element, $attrs, $ctrl) {
 			$scope.close = $ctrl.bubblePop;
 
 			$scope.body = $attrs.body;
@@ -66,7 +64,7 @@ function uiKonpasaBubble() {
 			$element.show();
 
 			$scope.close = $element.remove;
-		}
+		}]
 	}
 }
 angular.module('uiKonpasa')
@@ -108,8 +106,7 @@ function uiKonpasaGallery() {
 			size: "@"
 		},
 		replace: false,
-		controller: function($scope, $element, $attrs)
-		{
+		controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
 			var gallery = [];
 			var active = 0;
 			var lightbox = undefined;
@@ -167,7 +164,7 @@ function uiKonpasaGallery() {
 			};
 
 			$element.addClass('ui-konpasa-gallery');
-		}
+		}]
 	};
 };
 
@@ -179,8 +176,7 @@ function uiKonpasaGalleryItem() {
 			title : '@',
 		},
 		require: '^uiKonpasaGallery',
-		link: function(scope, element, attrs, ctrl) {
-
+		link: ['scope', 'element', 'attrs', 'ctrl', function(scope, element, attrs, ctrl) {
 			angular.element(element).addClass('lightbox-thumbnail');
 			angular.element(element).addClass('col-md-'+ctrl.getColSize());
 			angular.element(element).addClass('col-sm-'+ctrl.getColSize());
@@ -196,7 +192,7 @@ function uiKonpasaGalleryItem() {
 			scope.openLightbox = function() {
 				ctrl.openLightbox(scope.position);
 			};
-		}
+		}]
 	};
 };
 
@@ -210,7 +206,7 @@ function uiKonpasaLightbox() {
 			title: "@",
 			source: "@",
 		},
-		link: function(scope, element, attrs, ctrl) {
+		link: ['scope', 'element', 'attrs', 'ctrl', function(scope, element, attrs, ctrl) {
 			ctrl.registerLightbox(scope);
 			
 			scope.previousImg = function() {
@@ -220,7 +216,7 @@ function uiKonpasaLightbox() {
 			scope.nextImg = function() {
 				ctrl.openLightbox(ctrl.getActive()+1);
 			}
-		}
+		}]
 	};
 };
 angular.module('uiKonpasa')
@@ -233,9 +229,9 @@ function uiKonpasaModal() {
 			title: '='
 		},
 		transclude: true,
-		link: function($scope, $element, $attrs, $ctrl) {
+		link: ['$scope', '$element', '$attrs', '$ctrl', function($scope, $element, $attrs, $ctrl) {
 			$element.modal('hide');
-		}
+		}]
 
 	}
 }
@@ -247,10 +243,10 @@ function uiKonpasaSidemenu() {
 		templateUrl: 'templates/sidemenu.tpl.html',
 		transclude: true,
 		restrict: 'E',
-		controller: function($scope, $element, $attrs)
+		controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs)
 		{
 			$element.slide()
-		}
+		}]
 	};
 };
 angular.module('uiKonpasaTemplates', ['templates/bubble.tpl.html', 'templates/confirm.tpl.html', 'templates/galleryitem.tpl.html', 'templates/lightbox.tpl.html', 'templates/modal.tpl.html', 'templates/sidemenu.tpl.html']);

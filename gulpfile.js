@@ -10,7 +10,7 @@ gulp.task('build-js', function() {
 
 	gulp.src(['src/js/*.js', 'tmp/*.js'])
 	.pipe(concat('uiKonpasa.js'))
-	/*.pipe(uglify())*/
+	.pipe(uglify())
 	.pipe(gulp.dest('build/'));
 });
 

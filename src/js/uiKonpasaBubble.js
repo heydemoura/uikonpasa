@@ -9,8 +9,7 @@ function uiKonpasaBubbleArea() {
 			bubbles : '=',
 			max : '='
 		},
-		controller : function($scope, $element, $attrs) {
-			
+		controller : ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
 			this.pushBubble = function(bubble)
 			{
 				$scope.bubbles.push(bubble);
@@ -39,7 +38,7 @@ function uiKonpasaBubbleArea() {
 			    	}, 2000)
 				}
 			}, true);
-		}
+		}]
 	};
 };
 
@@ -49,8 +48,7 @@ function uiKonpasaBubble() {
 		replace: true,
 		require: "^uiKonpasaBubbleArea",
 		scope: true,
-		link: function($scope, $element, $attrs, $ctrl)
-		{
+		link: ['$scope', '$element', '$attrs', '$ctrl' ,function($scope, $element, $attrs, $ctrl) {
 			$scope.close = $ctrl.bubblePop;
 
 			$scope.body = $attrs.body;
@@ -59,6 +57,6 @@ function uiKonpasaBubble() {
 			$element.show();
 
 			$scope.close = $element.remove;
-		}
+		}]
 	}
 }

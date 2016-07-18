@@ -6,9 +6,9 @@ function uiKonpasaSidemenu() {
 		templateUrl: 'templates/sidemenu.tpl.html',
 		transclude: true,
 		restrict: 'E',
-		controller: function($scope, $element, $attrs)
+		controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs)
 		{
 			$element.slide()
-		}
+		}]
 	};
 };
