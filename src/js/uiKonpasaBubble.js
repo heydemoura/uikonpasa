@@ -47,12 +47,12 @@ function uiKonpasaBubble() {
 		templateUrl: 'templates/bubble.tpl.html',
 		replace: true,
 		require: "^uiKonpasaBubbleArea",
-		scope: true,
+		scope: {
+			body: '=',
+			type: '='
+		},
 		link: ['$scope', '$element', '$attrs', '$ctrl' ,function($scope, $element, $attrs, $ctrl) {
 			$scope.close = $ctrl.bubblePop;
-
-			$scope.body = $attrs.body;
-			$scope.type = $attrs.type;
 
 			$element.show();
 
